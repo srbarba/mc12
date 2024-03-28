@@ -1,8 +1,8 @@
 {
-  "name": "packageName",
+  "name": "mc12",
   "version": "0.0.0",
   "description": "",
-  "repository": "unjs/packageName",
+  "repository": "srbarba/mc12",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",

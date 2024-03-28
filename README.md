@@ -1,13 +1,19 @@
-# packageName
+# Meanwhile c12
 
 <!-- automd:badges color=yellow -->
 
-[![npm version](https://flat.badgen.net/npm/v/packageName?color=yellow)](https://npmjs.com/package/packageName)
-[![npm downloads](https://flat.badgen.net/npm/dm/packageName?color=yellow)](https://npmjs.com/package/packageName)
+[![npm version](https://flat.badgen.net/npm/v/mc12?color=yellow)](https://npmjs.com/package/mc12)
+[![npm downloads](https://flat.badgen.net/npm/dm/mc12?color=yellow)](https://npmjs.com/package/mc12)
 
 <!-- /automd -->
 
-This is my package description.
+Extendible task runner leveraging c12 for superior configuration flexibility.
+
+## Motivation
+
+When working across multiple projects using the same tools, maintaining these tools can significantly consume time. This burden could be drastically lessened if these tools adopted [unjs/c12](https://github.com/unjs/c12), allowing configuration changes from a centralized repository.
+
+Given the slow or non-existent adoption of [unjs/c12](https://github.com/unjs/c12), this tool addresses this challenge by enabling the definition of tasks for tool synchronization from a centralized repository, simplifying the repetitive maintenance tasks.
 
 ## Usage
 
@@ -17,19 +23,19 @@ Install package:
 
 ```sh
 # ✨ Auto-detect
-npx nypm install packageName
+npx nypm install mc12
 
 # npm
-npm install packageName
+npm install mc12
 
 # yarn
-yarn add packageName
+yarn add mc12
 
 # pnpm
-pnpm install packageName
+pnpm install mc12
 
 # bun
-bun install packageName
+bun install mc12
 ```
 
 <!-- /automd -->
@@ -76,11 +82,11 @@ import {} from "https://esm.sh/pkg";
 
 <!-- automd:contributors license=MIT -->
 
-Published under the [MIT](https://github.com/unjs/packageName/blob/main/LICENSE) license.
-Made by [community](https://github.com/unjs/packageName/graphs/contributors) 💛
+Published under the [MIT](https://github.com/srbarba/mc12/blob/main/LICENSE) license.
+Made by [community](https://github.com/srbarba/mc12/graphs/contributors) 💛
 <br><br>
-<a href="https://github.com/unjs/packageName/graphs/contributors">
-<img src="https://contrib.rocks/image?repo=unjs/packageName" />
+<a href="https://github.com/srbarba/mc12/graphs/contributors">
+<img src="https://contrib.rocks/image?repo=srbarba/mc12" />
 </a>
 
 <!-- /automd -->
