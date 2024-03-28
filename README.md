@@ -2,8 +2,8 @@
 
 <!-- automd:badges color=yellow -->
 
-[![npm version](https://flat.badgen.net/npm/v/mc12?color=yellow)](https://npmjs.com/package/mc12)
-[![npm downloads](https://flat.badgen.net/npm/dm/mc12?color=yellow)](https://npmjs.com/package/mc12)
+[![npm version](https://img.shields.io/npm/v/mc12?color=yellow)](https://npmjs.com/package/mc12)
+[![npm downloads](https://img.shields.io/npm/dm/mc12?color=yellow)](https://npmjs.com/package/mc12)
 
 <!-- /automd -->
 
