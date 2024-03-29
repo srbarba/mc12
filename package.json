@@ -30,6 +30,11 @@
     "test": "pnpm lint && pnpm test:types && vitest run --coverage",
     "test:types": "tsc --noEmit --skipLibCheck"
   },
+  "dependencies": {
+    "c12": "^1.10.0",
+    "citty": "^0.1.6",
+    "pathe": "^1.1.2"
+  },
   "devDependencies": {
     "@types/node": "^20.11.30",
     "@vitest/coverage-v8": "^1.4.0",

@@ -1,3 +1,8 @@
-import { test } from "../src";
+import { mc12 } from "../src";
 
-console.log(test());
+async function main() {
+  console.log(await mc12());
+}
+
+// eslint-disable-next-line unicorn/prefer-top-level-await
+main();

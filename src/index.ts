@@ -1,3 +1,2 @@
-export function test() {
-  return "works!";
-}
+export * from "./mc12";
+export * from "./config";
