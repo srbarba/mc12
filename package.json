@@ -31,6 +31,7 @@
     "test:types": "tsc --noEmit --skipLibCheck"
   },
   "dependencies": {
+    "@inquirer/prompts": "^4.3.0",
     "c12": "^1.10.0",
     "citty": "^0.1.6",
     "pathe": "^1.1.2"

@@ -1,6 +1,6 @@
 import { resolve } from "pathe";
 
-export interface Config {
+interface Config {
   /**
    * Working directory
    *
@@ -41,7 +41,11 @@ export async function loadConfig(
   const { config } = await loadConfig<Config>({
     cwd: dir,
     name: "mc12",
-    dotenv: true,
+    extend: {
+      extendKey: ["extends"],
+    },
+    envName: false,
+    omit$Keys: true,
     overrides,
     defaults: {
       dir,
@@ -49,4 +53,9 @@ export async function loadConfig(
   });
 
   return resolveConfig(config as Config);
+}
+
+export type MC12Config = Config;
+export function defineConfig<const T extends Config>(config: T) {
+  return config;
 }

@@ -2,53 +2,31 @@
 
 ## 1. Config: Task definition
 
-User must be able to define tasks in a configuration file.
+User must be able to define tasks in a configuration file and mc12 must execute configured tasks.
 
-Tasks can be of type:
+### Acceptance Criteria
 
-- object: containing the task properties
-- string: pointing to file path that exposes a task object
+- [ ] User must be able to define tasks as objects in a configuration file.
+- [ ] mc12 must execute configured tasks.
 
-Task config interface:
+### 1.1 User can define Task as Object
+
+At this point we will only support tasks defined as objects.
+
+The task config object will start with the following properties:
 
 ```typescript
-type TaskContext<Options> = {
-  options: Options
-} // TODO: Define TaskContext type
-type PromptOptions = any // TODO: Define PromptOptions type
-
-interface Task <Options = Record<string, any>> {
-  // meta information about the task
-  // this property opens the door for future features like task documentation
+interface TaskConfig {
+  tasks: Record<string, Task>;
+}
+interface Task<Options extends Record<string, any>> {
   meta: {
-    // task description to be displayed in the help command
+    name?: string;
     description: string;
-    // this will allow to filter tasks by tags
-    tags?: string[];
-    configKey?: string;
-  }
-  // handler is the function that will be executed when the task is run
-  handler: (context: TaskContext<Options>) => void | Promise<void>;);
-  defaults?:
-  // setup is intended to be used to setup the task context
-  // you can use it to setup the task context with the result of a prompt or any other async operation
-  setup?: (options: Record<string, any>) => TaskContext<Options> | Promise<TaskContext>;
-  // verify if the task can be run
-  // it is executed on task identification
-  // if it returns false the task will not be run
-  verify?: () => boolean | Promise<boolean>;
-  // task will be skipped if verify returns false
-  // this prevents to stop the execution of mc12 command
-  skipOnVerifyFail?: boolean
-  // task will be skipped if task setup or handler throws an error
-  skipOnError?: boolean
-  // task will be executed only on initial scaffold
-  scaffold?: boolean;
-  // allows to execute the task in parallel with other tasks
-  parallel?: boolean;
-  // declare tasks dependencies
-  // if task is marked as parallel, dependencies will be executed in given order
-  dependencies?: TaskName[];
+  };
+  handler: <TaskResult extends unknown>(
+    context: TaskContext<Options>,
+  ) => Promise<TaskResult>;
 }
 ```
 
@@ -57,31 +35,14 @@ Example config based on defined Task:
 ```json
 {
   "tasks": {
-    "task1": "path/to/task1",
-    "task2": {
-      "handler": (context) => console.log('My name is', context.name),
-      "setup": async () => {
-        const { name } = await input({
-          name: 'name',
-          message: 'What is your name?'
-        });
-        return { name };
-      },
-      "parallel": true,
-      "dependencies": ["task1"]
+    "my-task": {
+      "handler": () => console.log('My name is Doe, John Doe'),
     }
   }
 }
 ```
 
-### Acceptance Criteria
-
-- [ ] User must be able to define tasks in a configuration file.
-- [ ] Task must have a path property.
-- [ ] Task must have a scaffold property.
-- [ ] Task must have a prompts property.
-- [ ] Task must have a parallel property.
-- [ ] Task must have a dependencies property.
+### 1.1 User can define Task pointing to a file
 
 ## 2. Config: Alias definition
 
