@@ -1,12 +1,14 @@
 import { resolve } from "pathe";
+import type { TaskDef } from "./types";
 
-export interface Config {
+interface Config {
   /**
    * Working directory
    *
    * Defaults to the current working directory
    */
   dir?: string;
+  tasks: Record<string, TaskDef>;
 }
 
 const RESOLVED_CONFIG_SYMBOL = Symbol("mc12Config");
@@ -41,12 +43,22 @@ export async function loadConfig(
   const { config } = await loadConfig<Config>({
     cwd: dir,
     name: "mc12",
-    dotenv: true,
+    extend: {
+      extendKey: ["extends"],
+    },
+    envName: false,
+    omit$Keys: true,
     overrides,
     defaults: {
       dir,
+      tasks: {},
     },
   });
 
   return resolveConfig(config as Config);
+}
+
+export type MC12Config = Config;
+export function defineConfig<T extends Config>(config: T) {
+  return config;
 }
